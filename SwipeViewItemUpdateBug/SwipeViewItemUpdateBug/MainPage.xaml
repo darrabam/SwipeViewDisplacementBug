@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SwipeViewItemUpdateBug.MainPage">
+
+    <StackLayout Margin="0,50,0,0">
+        <CollectionView x:Name="collectionView" ItemsSource="{Binding Items}" VerticalOptions="Center">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="RemainOpen" >
+                                <SwipeItemView>
+                                    <Grid>
+                                        <Button BackgroundColor="Yellow" WidthRequest="50" TextColor="Black" Grid.Column="1" Text="+"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.IncrementCommand}" CommandParameter="{Binding}" />
+                                        <Button BackgroundColor="Yellow" WidthRequest="50" TextColor="Black" Grid.Column="0" Text="-"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DecrementCommand}" CommandParameter="{Binding}" />
+                                    </Grid>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <Grid Margin="5,5,5,5">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Title}" Grid.Column="0" FontSize="Large" VerticalOptions="Center" />
+                            <Label Text="{Binding Count}" Grid.Column="1" FontSize="Large" VerticalOptions="Center" />
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentPage>
