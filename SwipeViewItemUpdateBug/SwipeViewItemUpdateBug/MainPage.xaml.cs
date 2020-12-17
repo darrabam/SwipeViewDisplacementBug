@@ -10,6 +10,7 @@ namespace SwipeViewItemUpdateBug
 {
     public partial class MainPage : ContentPage
     {
+        private List<SwipeView> swipedItems = new List<SwipeView>();
         public MainPage()
         {
             InitializeComponent();

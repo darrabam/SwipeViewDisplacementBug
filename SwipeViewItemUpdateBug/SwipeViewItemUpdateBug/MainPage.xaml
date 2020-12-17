@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SwipeViewItemUpdateBug.MainPage">
 
-    <StackLayout Margin="0,50,0,0">
+    <StackLayout Margin="0,50,0,0" Background="#85939c">
         <CollectionView x:Name="collectionView" ItemsSource="{Binding Items}" VerticalOptions="Center">
             <CollectionView.ItemTemplate>
                 <DataTemplate>
@@ -12,23 +12,25 @@
                             <SwipeItems Mode="Reveal" SwipeBehaviorOnInvoked="RemainOpen" >
                                 <SwipeItemView>
                                     <Grid>
-                                        <Button BackgroundColor="Yellow" WidthRequest="50" TextColor="Black" Grid.Column="1" Text="+"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.IncrementCommand}" CommandParameter="{Binding}" />
-                                        <Button BackgroundColor="Yellow" WidthRequest="50" TextColor="Black" Grid.Column="0" Text="-"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DecrementCommand}" CommandParameter="{Binding}" />
+                                        <Button BackgroundColor="#f09046" WidthRequest="50" TextColor="Black" Grid.Column="1" Text="+"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.IncrementCommand}" CommandParameter="{Binding}" />
+                                        <Button BackgroundColor="#d14756" WidthRequest="50" TextColor="Black" Grid.Column="0" Text="-"  Command="{Binding Source={x:Reference collectionView}, Path=BindingContext.DecrementCommand}" CommandParameter="{Binding}" />
                                     </Grid>
                                 </SwipeItemView>
                             </SwipeItems>
                         </SwipeView.LeftItems>
-                        <Grid Margin="5,5,5,5">
-                            <Grid.RowDefinitions>
+                        <Frame Margin="4" Padding="2" CornerRadius="20" BackgroundColor="#466160">
+                        <Grid Margin="0,0,0,0" BackgroundColor="Transparent" >
+                                <Grid.RowDefinitions>
                                 <RowDefinition Height="50" />
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Title}" Grid.Column="0" FontSize="Large" VerticalOptions="Center" />
-                            <Label Text="{Binding Count}" Grid.Column="1" FontSize="Large" VerticalOptions="Center" />
-                        </Grid>
+                            <Label Text="{Binding Title}" TextColor="LightGray" Grid.Column="0" FontSize="Large" Margin="10,0,10,0" VerticalOptions="Center" />
+                            <Label Text="{Binding Count}" TextColor="LightGray" Grid.Column="1" FontSize="Large" VerticalOptions="Center" />
+                          </Grid>
+                        </Frame>
                     </SwipeView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
